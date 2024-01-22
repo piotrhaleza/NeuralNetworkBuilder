@@ -1,0 +1,321 @@
+﻿<Window x:Class="MachineLearningWpfUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MachineLearningWpfUI"    
+        xmlns:enum="clr-namespace:MachineLearingInterfaces.ActivationFunc;assembly=MachineLearingInterfaces"
+        xmlns:enumwpf ="clr-namespace:MachineLearningWpfUI.Models.Enums"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:helpers="clr-namespace:Bukma.Helpers"
+        xmlns:Helpers="clr-namespace:Bukma.Helpers"
+        mc:Ignorable="d"
+        Background="Transparent"
+        ResizeMode="CanMinimize"
+
+        Title="ParameterWindow" Height="800" Width="1500" >
+    <Window.Resources>
+        <ObjectDataProvider x:Key="enumValues"  MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:ActivationFuncEnum"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <Helpers:BindingProxy x:Key="proxy" Data="{Binding}"/>
+    </Window.Resources>
+   
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.7*"/>
+                <ColumnDefinition Width="23*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <Style x:Key="_ListBoxItemStyle" TargetType="ListBoxItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border Name="_Border"
+                                Padding="2"
+                                SnapsToDevicePixels="true"
+                                    >
+                                    <ContentPresenter />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="true">
+                                        <Setter TargetName="_Border" Property="Background" Value="#aa55AAFF"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+                <Color x:Key="WhiteColor">White</Color>
+                <Color x:Key="BlackColor">Black</Color>
+                <Color x:Key="MainColor">#ff2C3E50</Color>
+                <Color x:Key="MainForegroundColor">White</Color>
+                <Color x:Key="HighlightColor">#ff26798F</Color>
+                <Color x:Key="SelectionColor">#ffc580f2</Color>
+                <Color x:Key="AssistantColor">#ffB9CCE2</Color>
+                <Color x:Key="BackgroundColor">White</Color>
+                <Color x:Key="ForegroundColor">Black</Color>
+                <Color x:Key="SubBackgroundColor">#ffEDFBFF</Color>
+                <Color x:Key="DarkSubBackgroundColor">#FFCCF1FF</Color>
+                <Color x:Key="SubForegroundColor">Black</Color>
+                <Color x:Key="RedColor">#AD4640</Color>
+
+                <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource WhiteColor}"/>
+                <SolidColorBrush x:Key="BlackBrush" Color="{StaticResource BlackColor}"/>
+                <SolidColorBrush x:Key="MainBrush" Color="{StaticResource MainColor}"/>
+                <SolidColorBrush x:Key="MainForegroundBrush" Color="{StaticResource MainForegroundColor}"/>
+                <SolidColorBrush x:Key="HighlightBrush" Color="{StaticResource HighlightColor}"/>
+                <SolidColorBrush x:Key="SelectionBrush" Color="{StaticResource SelectionColor}"/>
+                <SolidColorBrush x:Key="AssistantBrush" Color="{StaticResource AssistantColor}"/>
+                <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}"/>
+                <SolidColorBrush x:Key="ForegroundBrush" Color="{StaticResource ForegroundColor}"/>
+                <SolidColorBrush x:Key="SubBackgroundBrush" Color="{StaticResource SubBackgroundColor}"/>
+                <SolidColorBrush x:Key="DarkSubBackgroundBrush" Color="{StaticResource DarkSubBackgroundColor}"/>
+                <SolidColorBrush x:Key="SubForegorundBrush" Color="{StaticResource SubForegroundColor}"/>
+
+            </Grid.Resources>
+
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+                <Grid  Background="Black">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="290"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Funkcja aktywacyjna" Foreground="White" FontWeight="DemiBold"   FontSize="17" Margin="10,18,0,0"/>
+                    <TextBlock  Grid.Column="1" Text="Wzór" Foreground="White" FontWeight="DemiBold"   FontSize="17" Margin="0,18,0,0"/>
+                    <TextBlock  Grid.Column="2" Text="Liczba neuronów" Foreground="White" FontWeight="DemiBold"   FontSize="17" Margin="0,18,0,0"/>
+                </Grid>
+                <ListBox Grid.Row="1" Background="#FF2B2B2B" x:Name="LayersWpf" HorizontalAlignment="Stretch" ItemContainerStyle="{DynamicResource _ListBoxItemStyle}" ItemsSource="{Binding Layers, UpdateSourceTrigger=PropertyChanged}" 
+         BorderThickness="0" Margin="-5,2,0,0" SelectionMode="Single"  >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border x:Name="la" BorderThickness="0,0,0,0">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Background" Value="#FF2B2B2B"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Odd}" Value="true">
+                                                <Setter Property="Background" Value="#444444"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="180" />
+                                        <ColumnDefinition Width="250" />
+                                        <ColumnDefinition Width="150" />
+                                        <ColumnDefinition Width="690" />
+                                        <ColumnDefinition Width="100" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="15,0,10,10" Grid.Column="0" VerticalContentAlignment="Center" FontSize="16" Foreground="White" BorderBrush="White" MinWidth="40" SelectedItem="{Binding KindActivation, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Source={StaticResource enumValues}}">
+                                        <ComboBox.Resources>
+                                            <SolidColorBrush x:Key="MaterialDesignPaper" Color="#222222"/>
+                                        </ComboBox.Resources>
+                                    </ComboBox>
+                                    <TextBlock Grid.Column="1" HorizontalAlignment="Center" Foreground="#eeeeee"  FontSize="15" Margin="10,18,0,0">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="Text" Value="{Binding Pattern}"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                    <TextBox Text="{Binding NumberOfNeurons}" BorderBrush="#eeeeee" Grid.Column="2" PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" MinWidth="50" Foreground="#eeeeee"></TextBox>
+                                    <Button Background="Transparent" Margin="0,0,0,0" Padding="6" Grid.Column="4"  Width="40"   Height="40" BorderBrush="{x:Null}" Command="{Binding Data.ClickCommand, Source={StaticResource proxy}}" >
+                                        <Image Source="C:\Users\piotr\source\repos\SnakeGame\MachineLearningWpfUI\Resources\Properties.png"/>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <!--<StackPanel Orientation="Horizontal"  Grid.Row="2">
+                <StackPanel VerticalAlignment="Center">
+                    <Ellipse Height="20" Width="20" Margin="10" Fill="White"/>
+                    <Ellipse Height="20" Width="20" Margin="10"  Fill="White"/>
+                </StackPanel>
+                <StackPanel  VerticalAlignment="Center">
+                    <Ellipse Height="20" Width="20" Margin="10" Fill="White"/>
+                    <Ellipse Height="20" Width="20" Margin="10"  Fill="White"/>
+                    <Ellipse Height="20" Width="20" Margin="10" Fill="White"/>
+                    <Ellipse Height="20" Width="20" Margin="10"  Fill="White"/>
+                    <Ellipse Height="20" Width="20" Margin="10" Fill="White"/>
+                    
+                </StackPanel>
+            </StackPanel>-->
+            </Grid>
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="70"  Background="Black">
+
+                <Button  Background="Transparent" Margin="-5,10,0,0" Padding="0" Width="40" Height="40" BorderBrush="{x:Null}" Command="{Binding MoveCommand}" >
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="Border" 
+                      BorderThickness="1"
+                      Background="{TemplateBinding Background}"
+                      BorderBrush="{TemplateBinding BorderBrush}">
+                                            <ContentPresenter Margin="2"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    RecognizesAccessKey="True"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                    <Image HorizontalAlignment="Center">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Setter Property="Source" Value="C:\Users\piotr\source\repos\SnakeGame\MachineLearningWpfUI\Resources\CreateBlue.png"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding AppMode}" Value="{x:Static enumwpf:AppMode.Create}">
+                                        <Setter Property="Source" Value="C:\Users\piotr\source\repos\SnakeGame\MachineLearningWpfUI\Resources\createViolent.png"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Button>
+                <Button  Background="Transparent" Margin="-5,20,0,0"  Padding="0" Width="40" Height="40"  BorderBrush="{x:Null}" Command="{Binding MoveCommand}" >
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="Border" 
+                      BorderThickness="1"
+                      Background="{TemplateBinding Background}"
+                      BorderBrush="{TemplateBinding BorderBrush}">
+                                            <ContentPresenter Margin="2"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    RecognizesAccessKey="True"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                    <Image HorizontalAlignment="Center">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Setter Property="Source" Value="C:\Users\piotr\source\repos\SnakeGame\MachineLearningWpfUI\Resources\networkBlue.png"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding AppMode}" Value="{x:Static enumwpf:AppMode.Create}">
+                                        <Setter Property="Source" Value="C:\Users\piotr\source\repos\SnakeGame\MachineLearningWpfUI\Resources\networkPurple.png"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Button>
+                <Button  Background="Transparent" Margin="-5,20,0,0" Padding="0" Width="40" Height="40"  BorderBrush="{x:Null}" Command="{Binding MoveCommand}" >
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="Border" 
+                      BorderThickness="1"
+                      Background="{TemplateBinding Background}"
+                      BorderBrush="{TemplateBinding BorderBrush}">
+                                            <ContentPresenter Margin="2"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    RecognizesAccessKey="True"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                    <Image HorizontalAlignment="Center">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Setter Property="Source" Value="C:\Users\piotr\source\repos\SnakeGame\MachineLearningWpfUI\Resources\startBlue.png"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding AppMode}" Value="{x:Static enumwpf:AppMode.Create}">
+                                        <Setter Property="Source" Value="C:\Users\piotr\source\repos\SnakeGame\MachineLearningWpfUI\Resources\startPurple.png"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="40"   Background="#FF232323">
+                <Button Background="Transparent" Margin="0,22,0,0" Padding="6" Width="40"   Height="40" BorderBrush="{x:Null}" Command="{Binding MoveCommand}" >
+                    <Image>
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Setter Property="Source" Value="C:\Users\piotr\source\repos\SnakeGame\MachineLearningWpfUI\Resources\move_100.png"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding CreatingMode}" Value="{x:Static enumwpf:CreatingMode.Moving}">
+                                        <Setter Property="Source" Value="C:\Users\piotr\source\repos\SnakeGame\MachineLearningWpfUI\Resources\MoveModeOn.png"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Button>
+                <Button Background="Transparent" Margin="0,10,0,0"  Padding="6" Width="40"   Height="40"  BorderBrush="{x:Null}"  Command="{Binding AddCommand}">
+                    <Image   Source="C:\Users\piotr\source\repos\SnakeGame\MachineLearningWpfUI\Resources\add.png">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Setter Property="Opacity" Value="1"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding CreatingMode}" Value="{x:Static enumwpf:CreatingMode.Moving}">
+                                        <Setter Property="Opacity" Value="0.5"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Button>
+                <Button Background="Transparent" Margin="0,10,0,0"  Padding="6" Width="40"   Height="40"  BorderBrush="{x:Null}"  Command="{Binding DeleteCommand}" >
+
+                    <Image Source="C:\Users\piotr\source\repos\SnakeGame\MachineLearningWpfUI\Resources\minus_100.png">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Setter Property="Opacity" Value="1"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding CreatingMode}" Value="{x:Static enumwpf:CreatingMode.Moving}">
+                                        <Setter Property="Opacity" Value="0.5"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Button>
+                <Button Background="Transparent" Margin="0,10,0,0"  Padding="6" Width="40"   Height="40"  BorderBrush="{x:Null}" Command="{Binding SaveCommand}">
+                    <Image  Source="C:\Users\piotr\source\repos\SnakeGame\MachineLearningWpfUI\Resources\save_100.png">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Setter Property="Opacity" Value="1"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding CreatingMode}" Value="{x:Static enumwpf:CreatingMode.Moving}">
+                                        <Setter Property="Opacity" Value="0.5"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Button>
+            </StackPanel>
+
+        </Grid>
+  
+</Window>

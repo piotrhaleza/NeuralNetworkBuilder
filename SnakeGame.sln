@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakeGame.UI", "SnakeGame.UI\SnakeGame.UI.csproj", "{8B69DEA0-9CA1-41FF-A8EB-65CB76EC040C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachineLearning", "MachineLearning\MachineLearning.csproj", "{46A5E543-CEDB-4444-9E45-19CB7DB70B4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachineLearningsUi", "MachineLearningsUi\MachineLearningsUi.csproj", "{A26D1562-7F5C-4D8A-90A5-1A69B5A73625}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachineLearningWpfUI", "MachineLearningWpfUI\MachineLearningWpfUI.csproj", "{D5A2A9A6-35C9-4320-B617-BDFCBEBC591E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachineLearingInterfaces", "MachineLearingInterfaces\MachineLearingInterfaces.csproj", "{9FBD6F83-64F1-4384-86EA-9CA5AF5368D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MlUnitTest", "MlUnitTest\MlUnitTest.csproj", "{116439EC-E316-41CF-B3D8-2F8F11C82028}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{ECC2A156-C786-46DA-ACB6-BF80F6B56904}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B69DEA0-9CA1-41FF-A8EB-65CB76EC040C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B69DEA0-9CA1-41FF-A8EB-65CB76EC040C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B69DEA0-9CA1-41FF-A8EB-65CB76EC040C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B69DEA0-9CA1-41FF-A8EB-65CB76EC040C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46A5E543-CEDB-4444-9E45-19CB7DB70B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46A5E543-CEDB-4444-9E45-19CB7DB70B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46A5E543-CEDB-4444-9E45-19CB7DB70B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46A5E543-CEDB-4444-9E45-19CB7DB70B4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A26D1562-7F5C-4D8A-90A5-1A69B5A73625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A26D1562-7F5C-4D8A-90A5-1A69B5A73625}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A26D1562-7F5C-4D8A-90A5-1A69B5A73625}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A26D1562-7F5C-4D8A-90A5-1A69B5A73625}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5A2A9A6-35C9-4320-B617-BDFCBEBC591E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5A2A9A6-35C9-4320-B617-BDFCBEBC591E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5A2A9A6-35C9-4320-B617-BDFCBEBC591E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5A2A9A6-35C9-4320-B617-BDFCBEBC591E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FBD6F83-64F1-4384-86EA-9CA5AF5368D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FBD6F83-64F1-4384-86EA-9CA5AF5368D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FBD6F83-64F1-4384-86EA-9CA5AF5368D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FBD6F83-64F1-4384-86EA-9CA5AF5368D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{116439EC-E316-41CF-B3D8-2F8F11C82028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{116439EC-E316-41CF-B3D8-2F8F11C82028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{116439EC-E316-41CF-B3D8-2F8F11C82028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{116439EC-E316-41CF-B3D8-2F8F11C82028}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{116439EC-E316-41CF-B3D8-2F8F11C82028} = {ECC2A156-C786-46DA-ACB6-BF80F6B56904}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73CFC011-1311-4153-A2BC-801D9C32399F}
+	EndGlobalSection
+EndGlobal
